@@ -12,7 +12,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation,:cash_balance
+  attr_accessible :name, :email, :password, :password_confirmation, :cash_balance
   has_many :stocks, :inverse_of => :user
   has_secure_password
 end

@@ -14,5 +14,21 @@
 class Stock < ActiveRecord::Base
   attr_accessible :ticker, :init_value,:shares,:user_id
   belongs_to :user, :inverse_of => :stocks
+  before_save :stock_init
+
+  def current_value
+    YahooFinance::get_quotes(YahooFinance::StandardQuote, self.ticker.upcase)[self.ticker.upcase].lastTrade
+  end
+
+  def stocks_value
+    self.current_value * self.shares
+  end
+
+  def stock_init
+    self.init_value = self.current_value
+  end
+
+
+
 end
 

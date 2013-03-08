@@ -17,5 +17,5 @@ development:
   encoding: unicode
   database: tradr_development
   pool: 5
-  username: nblanchet
+  username: AdiSingh
   password:
